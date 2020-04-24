@@ -19,13 +19,13 @@ var connection = mysql.createConnection({
 connection.connect(function (err) {
     if (err) throw err;
     console.log(colors.cyan("Welcome! ...you are now connected to the Bamazon Store database as id " + connection.threadId));
-    //connection.end();
+   
 
-    bamazon();      //Call main function
+    bamazon();      
 
-});                 // End Connection Script
+});                 
 
-// BEGIN Display Inventory
+// Display Inventory
 function bamazon() {
     connection.query('SELECT * FROM products', function (err, res) {
         if (err) throw err;
@@ -45,9 +45,9 @@ function bamazon() {
         }
 
         console.log(table.toString());
-        // END Display Inventory
+        
 
-        // Prompt Customers Input
+        // Ask for Customers Input
         inquirer.prompt([
             {
                 type: "number",
@@ -61,7 +61,7 @@ function bamazon() {
             },
         ])
 
-            // Ordering function
+            
             .then(function (cart) {
 
                 var quantity = cart.quantity;
@@ -70,7 +70,7 @@ function bamazon() {
                 connection.query('SELECT * FROM products WHERE id=' + itemID, function (err, selectedItem) {
                     if (err) throw err;
 
-                    // Varify item quantity desired is in inventory
+                    
                     if (selectedItem[0].stock_quantity - quantity >= 0) {
 
                         console.log("INVENTORY AUDIT: Quantity in Stock: ".green + selectedItem[0].stock_quantity + " Order Quantity: ".green + quantity.yellow);
@@ -79,7 +79,7 @@ function bamazon() {
 
                        
 
-                        // Calculate total sale, and fix 2 decimal places
+                       
                         console.log("Thank You for your purchase. Your order total will be ".green + (cart.quantity * selectedItem[0].price).toFixed(2).yellow + " dollars.".green, "\nThank you for shopping at Bamazon!".magenta);
 
                        
