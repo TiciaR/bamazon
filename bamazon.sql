@@ -25,3 +25,16 @@ CREATE TABLE products (
 
   PRIMARY KEY (id)
 );
+
+-- Insert more than one row at a time
+ INSERT INTO products (product_name, department_name, price, stock_quantity)
+ VALUES ("Toilet Paper", "Essentials", 12.50, 280),
+ ("Hand Sanitizer", "Essentials", 5.00, 150),
+ ("Clorox Wipes", "Essentials", 8.00, 200),
+ ("Hand Soap", "Essentials", 3.99, 260),
+ ("Paper Towels", "Also Essential", 7.00, 400),
+ ("Chocolates", "Also Essential", 10.75, 300),
+ ("Netflix Subscription", "Also Essential", 14.00, 400),
+ ("Puzzles", "Fun Stuff", 10.00, 200),
+ ("Hot Pockets", "Fun Stuff", 06.00, 300),
+ ("Hair Color", "Fun Stuff", 12.00, 160);
